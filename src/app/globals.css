@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.75rem;
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --border: #2a2a2a;
+  --primary: #ff6b35;
+  --muted: #888888;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2a2a transparent;
+}
+
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #2a2a2a;
+  border-radius: 3px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Black94 Custom Utilities */
+@layer components {
+  .b94-card {
+    @apply bg-black94-card border border-black94-border rounded-xl;
+  }
+
+  .b94-input {
+    @apply bg-black94-surface border border-black94-border rounded-lg px-4 py-2.5 text-white placeholder-black94-muted focus:outline-none focus:border-black94-primary transition-colors w-full;
+  }
+
+  .b94-btn-primary {
+    @apply bg-black94-primary text-white font-semibold px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .b94-btn-secondary {
+    @apply border border-black94-border text-white font-medium px-6 py-2.5 rounded-full hover:bg-black94-surface transition-colors;
+  }
+
+  .b94-badge-blue {
+    @apply inline-flex items-center justify-center w-4 h-4 bg-blue-500 rounded-full;
+  }
+
+  .b94-badge-gold {
+    @apply inline-flex items-center justify-center w-4 h-4 bg-yellow-500 rounded-full;
+  }
+
+  .b94-verified-affiliate {
+    @apply text-xs bg-black94-surface border border-black94-border text-black94-muted px-2 py-0.5 rounded-full;
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Chat bubble styles */
+.chat-bubble-sent {
+  @apply bg-black94-primary text-white rounded-2xl rounded-br-sm px-4 py-2 max-w-xs ml-auto;
+}
+
+.chat-bubble-received {
+  @apply bg-black94-card text-white rounded-2xl rounded-bl-sm px-4 py-2 max-w-xs;
+}
